@@ -1,5 +1,7 @@
 # bsseval
 
+:warning: this is a work-in-progress
+
 [![Build Status](https://travis-ci.org/sigsep/bsseval.svg?branch=master)](https://travis-ci.org/sigsep/bsseval)
 [![Latest Version](https://img.shields.io/pypi/v/bsseval.svg)](https://pypi.python.org/pypi/bsseval)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/bsseval.svg)](https://pypi.python.org/pypi/bsseval)
