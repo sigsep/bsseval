@@ -1,5 +1,5 @@
 from . import metrics
-from utils import pad_or_truncate
+from .utils import pad_or_truncate
 import numpy as np
 
 
