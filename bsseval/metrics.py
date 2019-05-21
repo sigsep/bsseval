@@ -1,50 +1,3 @@
-# -*- coding: utf-8 -*-
-"""BSS Eval toolbox, version 4 (Based on mir_eval.separation)
-
-Source separation algorithms attempt to extract recordings of individual
-sources from a recording of a mixture of sources.  Evaluation methods for
-source separation compare the extracted sources from reference sources and
-attempt to measure the perceptual quality of the separation.
-
-See also the bss_eval MATLAB toolbox:
-http://bass-db.gforge.inria.fr/bss_eval/
-
-Conventions
------------
-
-An audio signal is expected to be in the format of a 2-dimensional array where
-the first dimension goes over the samples of the audio signal and the second
-dimension goes over the channels (as in stereo left and right).
-When providing a group of estimated or reference sources, they should be
-provided in a 3-dimensional array, where the first dimension corresponds to the
-source number, the second corresponds to the samples and the third to the
-channels.
-
-Metrics
--------
-
-* :func:`mir_eval.separation.bss_eval`: Computes the bss_eval metrics: source
-  to distortion (SDR), source to artifacts (SAR), source to interference (SIR)
-  ratios, plus the image to spatial ratio (ISR). These are computed on a frame
-  by frame basis, (with infinite window size meaning the whole signal).
-
-  Optionally, the distortion filters are time-varying, corresponding to
-  behavior of BSS Eval version 3. Furthermore, metrics may optionally
-  correspond to the bsseval_sources version, as defined in the BSS Eval
-  version 2.
-
-References
-----------
-  .. Antoine Liutkus, Fabian-Robert Stöter and Nobutaka
-     Ito, "The 2018 Signal Separation Evaluation Campaign," In Proceedings of
-     LVA/ICA 2018.
-  .. Emmanuel Vincent, Rémi Gribonval, and Cédric
-      Févotte, "Performance measurement in blind audio source separation," IEEE
-      Trans. on Audio, Speech and Language Processing, 14(4):1462-1469, 2006.
-  .. Cédric Févotte, Rémi Gribonval and Emmanuel
-     Vincent, "BSS_EVAL toolbox user guide - Revision 2.0", Technical Report
-     1706, IRISA, April 2005."""
-
 import numpy as np
 import scipy.fftpack
 from scipy.linalg import toeplitz
@@ -52,7 +5,6 @@ from scipy.signal import fftconvolve
 import itertools
 import collections
 import warnings
-from . import util
 
 # The maximum allowable number of sources (prevents insane computational load)
 MAX_SOURCES = 100
@@ -359,7 +311,7 @@ def bss_eval_sources(reference_sources, estimated_sources,
     ``bsseval_sources`` parameter of ``bss_eval``.
 
     """
-    (sdr, isr, sir, sar, perm) = \
+    (sdr, _, sir, sar, perm) = \
         bss_eval(
             reference_sources, estimated_sources,
             window=np.inf, hop=np.inf,
@@ -381,7 +333,7 @@ def bss_eval_sources_framewise(reference_sources, estimated_sources,
     ``bsseval_sources`` parameter of ``bss_eval``.
 
     """
-    (sdr, isr, sir, sar, perm) = \
+    (sdr, _, sir, sar, perm) = \
         bss_eval(
             reference_sources, estimated_sources,
             window=window, hop=hop,

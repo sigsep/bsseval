@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-import museval.metrics as metrics
+import bsseval.metrics as metrics
 
 
 @pytest.fixture(params=[2])

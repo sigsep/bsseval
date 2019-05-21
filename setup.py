@@ -3,14 +3,14 @@ import setuptools
 if __name__ == "__main__":
     setuptools.setup(
         # Name of the project
-        name='museval',
+        name='bsse',
 
         # Version
-        version="0.3.0",
+        version="0.1.0",
 
         # Description
-        description='Evaluation tools for the SIGSEP MUS database',
-        url='https://github.com/sigsep/sigsep-mus-eval',
+        description='Evaluation tools for the audio source separation',
+        url='https://github.com/sigsep/bsseval',
 
         # Your contact information
         author='Fabian-Robert Stoeter',
@@ -23,27 +23,12 @@ if __name__ == "__main__":
         # find_packages() finds all these automatically for you
         packages=setuptools.find_packages(),
 
-        entry_points={
-            'console_scripts': [
-                'museval=museval.cli:museval',
-                'bsseval=museval.cli:bsseval'
-            ],
-        },
         # Dependencies, this installs the entire Python scientific
         # computations stack
         install_requires=[
-            'musdb>=0.2.0',
             'numpy',
             'scipy',
-            'six',
-            'simplejson',
-            'soundfile',
-            'jsonschema'
         ],
-
-        package_data={
-            'museval': ['musdb.schema.json'],
-        },
 
         extras_require={
             'tests': [
@@ -68,7 +53,6 @@ if __name__ == "__main__":
             'Environment :: Plugins',
             'Intended Audience :: Telecommunications Industry',
             'Intended Audience :: Science/Research',
-            'Programming Language :: Python :: 2.7',
             'Programming Language :: Python :: 3.4',
             'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
